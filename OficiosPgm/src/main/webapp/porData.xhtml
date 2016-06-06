@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/templates/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+	<ui:define name="corpo">
+		<!-- <script type="text/javascript" >
+			function abrirRel(){
+				window.open("exibeRelatorios.xhtml", "janela", "height=800,width=1200,scrollbars=yes")
+			}
+		</script> -->
+
+		<h:form id="frm" >
+			<h1>Ofícios por data</h1>
+
+			<p:growl autoUpdate="true" />
+			
+			<h:panelGrid columns="2" id="panelDatas">
+				<p:outputLabel value="Data criação" />
+				<h:panelGroup>
+					<p:calendar value="#{relPorDataBean.dataInicio}" label="Data início"
+						pattern="dd/MM/yyyy" size="8" id="dataInicio" />
+					<p:spacer width="8" />
+					<h:outputText value="a" />
+					<p:spacer width="8" />
+					<p:calendar value="#{relPorDataBean.dataFim}" label="Data final"
+						pattern="dd/MM/yyyy" size="8" id="dataFinal" />
+				</h:panelGroup>
+				
+				<p:outputLabel />
+				
+				<h:panelGroup>			
+					<p:commandButton id="btnRelPorData" value="Visualizar" action="#{relPorDataBean.emitir}"
+						process="panelDatas" update="@form" />				
+				</h:panelGroup>
+			</h:panelGrid>
+			
+			<p:dialog widgetVar="relPorData" id="relPorData" style="margin-top: 5px" modal="true"
+				header="Relatório por data" fitViewport="true" >
+				<p:media value="#{relPorDataBean.content}" height="800" width="1200"
+					id="viewerPorData" player="pdf" cache="false" />
+			</p:dialog>
+		</h:form>
+	</ui:define>
+</ui:composition>
