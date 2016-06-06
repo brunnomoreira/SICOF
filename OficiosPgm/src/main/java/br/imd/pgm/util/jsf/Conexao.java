@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexao {
-	
+
 	private Connection conexao;
 
 	public Conexao() throws ClassNotFoundException, SQLException {
@@ -21,9 +21,8 @@ public class Conexao {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conexao = DriverManager.getConnection("jdbc:mysql://" + endereco
-					+ ":" + porta + "/" + banco + "?user=" + usuario
-					+ "&password=" + senha);
+			conexao = DriverManager.getConnection(
+					"jdbc:mysql://" + endereco + ":" + porta + "/" + banco + "?user=" + usuario + "&password=" + senha);
 
 		} catch (ClassNotFoundException ex) {
 			throw ex;

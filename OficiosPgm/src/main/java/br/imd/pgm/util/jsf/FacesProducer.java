@@ -9,28 +9,34 @@ import javax.servlet.http.HttpServletResponse;
 
 public class FacesProducer {
 
-	/*@Produces
-	@RequestScoped*/
+	/*
+	 * @Produces
+	 * 
+	 * @RequestScoped
+	 */
 	public FacesContext getFacesContext() {
 		return FacesContext.getCurrentInstance();
 	}
-	
+
 	@Produces
 	@RequestScoped
 	public ExternalContext getExternalContext() {
 		return getFacesContext().getExternalContext();
 	}
-	
-	/*@Produces
-	@RequestScoped*/
+
+	/*
+	 * @Produces
+	 * 
+	 * @RequestScoped
+	 */
 	public HttpServletRequest getHttpServletRequest() {
-		return ((HttpServletRequest) getExternalContext().getRequest());	
+		return ((HttpServletRequest) getExternalContext().getRequest());
 	}
-	
+
 	@Produces
 	@RequestScoped
 	public HttpServletResponse getHttpServletResponse() {
-		return ((HttpServletResponse) getExternalContext().getResponse());	
+		return ((HttpServletResponse) getExternalContext().getResponse());
 	}
-	
+
 }
