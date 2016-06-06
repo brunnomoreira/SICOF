@@ -25,15 +25,15 @@ public class ProcuradoresBean implements Serializable {
 
 	@Inject
 	private FacesMessages messages;
-	
+
 	@Inject
 	private Procurador procuradorEdicao;
-	
+
 	private List<Procurador> todosProcuradores;
-	
+
 	@PostConstruct
-	public void iniciar(){
-		//this.procuradorEdicao = new Procurador();
+	public void iniciar() {
+		// this.procuradorEdicao = new Procurador();
 	}
 
 	@Transacional
@@ -41,15 +41,15 @@ public class ProcuradoresBean implements Serializable {
 		this.procuradores.gravar(this.procuradorEdicao);
 		this.procuradorEdicao = new Procurador();
 		this.consultar();
-		
+
 		this.messages.info("Procurador salvo com sucesso!");
 	}
-	
+
 	@Transacional
-	public void excluir(Procurador procurador){
+	public void excluir(Procurador procurador) {
 		this.procuradores.excluir(procurador);
 		this.consultar();
-		
+
 		this.messages.info("Procurador excluído com sucesso!");
 	}
 
@@ -68,8 +68,8 @@ public class ProcuradoresBean implements Serializable {
 	public List<Procurador> getTodosProcuradores() {
 		return todosProcuradores;
 	}
-	
-	public Procuradorias[] getProcuradorias(){
+
+	public Procuradorias[] getProcuradorias() {
 		return Procuradorias.values();
 	}
 
