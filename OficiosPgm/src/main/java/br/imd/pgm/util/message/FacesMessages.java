@@ -14,16 +14,16 @@ public class FacesMessages implements Serializable {
 		FacesContext context = FacesContext.getCurrentInstance();
 		FacesMessage msg = new FacesMessage(message);
 		msg.setSeverity(severity);
-		
+
 		context.addMessage(null, msg);
 	}
-	
+
 	public void info(String message) {
 		add(message, FacesMessage.SEVERITY_INFO);
 	}
-	
+
 	public void error(String message) {
 		add(message, FacesMessage.SEVERITY_ERROR);
 	}
-	
+
 }
