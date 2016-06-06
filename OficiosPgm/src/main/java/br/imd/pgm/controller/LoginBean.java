@@ -16,22 +16,23 @@ import br.imd.pgm.util.message.FacesMessages;
 
 @Named
 @SessionScoped
-public class LoginBean implements Serializable{
+public class LoginBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	/*@Inject
-	private FacesContext facesContext;*/
-	
+
+	/*
+	 * @Inject private FacesContext facesContext;
+	 */
+
 	@Inject
 	private HttpServletRequest request;
-	
+
 	@Inject
 	private HttpServletResponse response;
-	
+
 	@Inject
 	private FacesMessages messages;
-	
+
 	private String login;
 
 	public void preRender() {
@@ -39,18 +40,19 @@ public class LoginBean implements Serializable{
 			messages.error("Usuário ou senha inválido!");
 		}
 	}
-	
+
 	public void loginSistema() throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/j_spring_security_check");
 		dispatcher.forward(request, response);
-		
-		FacesContext.getCurrentInstance().responseComplete();;
+
+		FacesContext.getCurrentInstance().responseComplete();
+		;
 	}
-	
+
 	public String getLogin() {
 		return login;
 	}
-	
+
 	public void setLogin(String login) {
 		this.login = login;
 	}

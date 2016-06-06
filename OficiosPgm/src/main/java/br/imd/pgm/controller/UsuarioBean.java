@@ -26,74 +26,74 @@ import br.imd.pgm.util.message.FacesMessages;
 public class UsuarioBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Inject
 	private Usuario usuarioEdicao;
 	private List<Usuario> todosUsuarios;
-	
+
 	private Grupo grupo;
-	
+
 	@Inject
 	private Usuarios usuarios;
-	
+
 	@Inject
 	private FacesMessages messages;
-	
+
 	@PostConstruct
-	private void iniciar(){
-		//this.usuarioEdicao = new Usuario();
+	private void iniciar() {
+		// this.usuarioEdicao = new Usuario();
 	}
-	
+
 	@Transacional
-	public void gravar(){	
-		//Griptografa senha com hash MD5
-		//this.usuarioEdicao.setSenha(DigestUtils.md5Hex(this.usuarioEdicao.getSenha()));
-		
-		if(this.usuarioEdicao.getGrupos().size() == 0){
+	public void gravar() {
+		// Griptografa senha com hash MD5
+		// this.usuarioEdicao.setSenha(DigestUtils.md5Hex(this.usuarioEdicao.getSenha()));
+
+		if (this.usuarioEdicao.getGrupos().size() == 0) {
 			this.messages.error("Adicione o usuário a pelo menos um grupo!");
-		}else{	
+		} else {
 			this.usuarios.gravar(this.usuarioEdicao);
 			this.usuarioEdicao = new Usuario();
 			this.consultar();
-			
+
 			this.messages.info("Usuário salvo com sucesso!");
 		}
 	}
-	
+
 	@Transacional
-	public void excluir(Usuario usuario){
-		if(usuario.getLogin().equals("admin")){
+	public void excluir(Usuario usuario) {
+		if (usuario.getLogin().equals("admin")) {
 			this.messages.info("O Administrador não pode ser excluído!");
-		}else{
+		} else {
 			this.usuarios.excluir(usuario);
 			this.consultar();
-			
+
 			this.messages.info("Usuário excluído com sucesso!");
 		}
 	}
 
 	public void consultar() {
-		this.todosUsuarios = this.usuarios.todos();		
+		this.todosUsuarios = this.usuarios.todos();
 	}
-	
-	public void adicionarGrupo(){
+
+	public void adicionarGrupo() {
 		this.usuarioEdicao.getGrupos().add(this.grupo);
-		
+
 	}
-	
-	public void novoGrupo(){
+
+	public void novoGrupo() {
 		this.grupo = new Grupo();
 	}
-	
-	public void removerGrupo(){
+
+	public void removerGrupo() {
 		this.usuarioEdicao.getGrupos().remove(this.grupo);
 	}
-	
-	public String prepararEdicao(){
+
+	public String prepararEdicao() {
 		return "gestaoUsuarios?faces-redirect=true";
 	}
-	
-	public void cancelar(){
+
+	public void cancelar() {
 		this.usuarioEdicao = new Usuario();
 	}
 
@@ -112,7 +112,7 @@ public class UsuarioBean implements Serializable {
 	public Grupo getGrupo() {
 		return grupo;
 	}
-	
+
 	public void setGrupo(Grupo grupo) {
 		this.grupo = grupo;
 	}

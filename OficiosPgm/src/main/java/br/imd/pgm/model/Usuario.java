@@ -37,7 +37,7 @@ public class Usuario implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	@NotEmpty(message = "O Nome é obrigatório!")
 	@Column(length = 120, nullable = false)
 	public String getNome() {
@@ -66,12 +66,10 @@ public class Usuario implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
+
 	@NotNull(message = "Adicione o usuário a pelo menos um grupo!")
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "usuario_grupo",
-		joinColumns = @JoinColumn(name = "id_usuario"),
-		inverseJoinColumns = @JoinColumn(name = "id_grupo"))
+	@JoinTable(name = "usuario_grupo", joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_grupo"))
 	public Set<Grupo> getGrupos() {
 		return grupos;
 	}
