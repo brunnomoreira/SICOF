@@ -13,15 +13,15 @@ public class Sequenciais implements Serializable {
 
 	@Inject
 	private EntityManager manager;
-	
-	public void atualizar(Sequencial sequencial){
-		
-		if(sequencial.getId() != null){
+
+	public void atualizar(Sequencial sequencial) {
+
+		if (sequencial.getId() != null) {
 			manager.merge(sequencial);
 		}
 	}
-	
-	public Sequencial numOficio(){
-		return this.manager.createQuery("FROM Sequencial", Sequencial.class).getSingleResult(); 
+
+	public Sequencial numOficio() {
+		return this.manager.createQuery("FROM Sequencial", Sequencial.class).getSingleResult();
 	}
 }

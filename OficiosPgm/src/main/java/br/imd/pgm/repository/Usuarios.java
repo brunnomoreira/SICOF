@@ -12,47 +12,45 @@ import br.imd.pgm.model.Usuario;
 public class Usuarios implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Inject
 	private EntityManager manager;
-	
-	public Usuario gravar(Usuario usuario){
+
+	public Usuario gravar(Usuario usuario) {
 		return this.manager.merge(usuario);
 	}
 
-	public void excluir(Usuario usuario){
+	public void excluir(Usuario usuario) {
 		usuario = porId(usuario.getId());
 		this.manager.remove(usuario);
 	}
-	
+
 	public Usuario porId(Long id) {
 		return this.manager.find(Usuario.class, id);
 	}
-	
-	public List<Usuario> todos(){
+
+	public List<Usuario> todos() {
 		return this.manager.createQuery("FROM Usuario", Usuario.class).getResultList();
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public List<Usuario> relUsuario(){
-		return this.manager.createQuery("FROM Usuario ORDER BY nome").getResultList(); 
+	public List<Usuario> relUsuario() {
+		return this.manager.createQuery("FROM Usuario ORDER BY nome").getResultList();
 	}
 
 	public Usuario porLogin(String login) {
 		Usuario usuario = null;
-		
+
 		try {
-	
+
 			usuario = manager.createQuery("FROM Usuario WHERE lower(login) = :login", Usuario.class)
 					.setParameter("login", login.toLowerCase()).getSingleResult();
-			
+
 		} catch (NoResultException e) {
 			e.printStackTrace();
 		}
-		
+
 		return usuario;
 	}
-	
-	
 
 }

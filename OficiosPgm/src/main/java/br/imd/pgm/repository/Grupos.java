@@ -14,22 +14,22 @@ public class Grupos implements Serializable {
 
 	@Inject
 	private EntityManager manager;
-	
-	public Grupo salvar(Grupo grupo){
+
+	public Grupo salvar(Grupo grupo) {
 		return this.manager.merge(grupo);
 	}
-	
-	public void excluir(Grupo grupo){
+
+	public void excluir(Grupo grupo) {
 		grupo = this.porId(grupo.getId());
 		this.manager.remove(grupo);
 	}
-	
+
 	public Grupo porId(Long id) {
 		return this.manager.find(Grupo.class, id);
 	}
 
-	public List<Grupo> todos(){
+	public List<Grupo> todos() {
 		return this.manager.createQuery("FROM Grupo", Grupo.class).getResultList();
 	}
-	
+
 }
