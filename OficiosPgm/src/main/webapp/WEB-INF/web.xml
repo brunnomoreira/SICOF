@@ -39,7 +39,7 @@
   </filter-mapping>
   <context-param>
     <param-name>primefaces.THEME</param-name>
-    <param-value>sam</param-value>
+    <param-value>bootstrap</param-value>	
   </context-param>
   <listener>
     <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
