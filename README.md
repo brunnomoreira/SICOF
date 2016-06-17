@@ -1,3 +1,5 @@
+#SICOF
+
 Órgãos da administração pública utilizam meus oficiais de se comunicarem tanto internamente como externamente. Para fins externos, que será o nosso foco, órgãos públicos utilizam o documento Ofício para comunicação com instituições externas. 
 
 Devido sua natureza, esse tipo de documento é difícil de ser gerenciado, principalmente quanto a prazos de resposta e outros fatores já que, geralmente, o único meio de controle desse tipo de documentação é por recibo e caderno de protocolo manual.
